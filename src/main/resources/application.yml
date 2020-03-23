@@ -1,0 +1,6 @@
+hop:
+  name: "cluj"
+  outbound:
+    -
+      name: "london"
+      path: "localhost:3000"
