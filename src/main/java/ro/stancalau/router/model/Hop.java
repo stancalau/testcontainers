@@ -2,6 +2,8 @@ package ro.stancalau.router.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.Objects;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Hop {
 
@@ -30,5 +32,19 @@ public class Hop {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Hop hop = (Hop) o;
+        return Objects.equals(name, hop.name) &&
+                Objects.equals(path, hop.path);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, path);
     }
 }

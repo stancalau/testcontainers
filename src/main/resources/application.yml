@@ -1,5 +1,5 @@
 hop:
-  name: "cluj"
+  name: ${HOP_NAME}
   outbound:
     -
       name: "london"

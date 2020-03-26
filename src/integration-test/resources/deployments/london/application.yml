@@ -1,0 +1,6 @@
+hop:
+  name: ${HOP_NAME}
+  outbound:
+    -
+      name: "berlin"
+      path: "http://berlin:8080"

@@ -11,12 +11,15 @@ public class HopPath {
 
     private List<Hop> hops = new ArrayList<>();
 
-    public List<Hop> getHops() {
-        return Collections.unmodifiableList(hops);
+    public HopPath() {
     }
 
     public HopPath(Hop hop) {
         add(hop);
+    }
+
+    public List<Hop> getHops() {
+        return Collections.unmodifiableList(hops);
     }
 
     public void add(Hop hop) {
