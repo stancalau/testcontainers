@@ -15,6 +15,11 @@ public class HopConfig {
     private String name;
     private List<Hop> outbound;
 
+    public HopConfig(String name, List<Hop> outbound) {
+        this.name = name;
+        this.outbound = outbound;
+    }
+
     public String getName() {
         return name;
     }

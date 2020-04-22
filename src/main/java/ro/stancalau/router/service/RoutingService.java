@@ -25,7 +25,6 @@ public class RoutingService {
 
     public HopPath route(String destination, String message) {
         if (config.getName().equals(destination)) {
-            //TODO save to mongo
             return new HopPath(currentHop);
         } else {
             Optional<HopPath> callPath = callHops(destination, message);
@@ -56,7 +55,7 @@ public class RoutingService {
 
     private Optional<HopPath> callOutbound(Hop hop, String destination, String message) {
         String url = UriComponentsBuilder
-                .fromHttpUrl(hop.getPath()+"/api/route/{dest}/{message}")
+                .fromHttpUrl(hop.getPath() + "/api/route/{dest}/{message}")
                 .buildAndExpand(destination, message)
                 .toUriString();
 
@@ -67,5 +66,4 @@ public class RoutingService {
             return Optional.empty();
         }
     }
-
 }

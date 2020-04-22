@@ -47,4 +47,12 @@ public class Hop {
     public int hashCode() {
         return Objects.hash(name, path);
     }
+
+    @Override
+    public String toString() {
+        return "Hop{" +
+                "name='" + name + '\'' +
+                ", path='" + path + '\'' +
+                '}';
+    }
 }
