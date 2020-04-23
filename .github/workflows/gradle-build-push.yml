@@ -10,7 +10,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     services:
       docker:
-        image: gitlab/dind
+        image: stancalau/dind_gradle_jdk:jdk9
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-java@v1
