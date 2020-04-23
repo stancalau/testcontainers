@@ -3,13 +3,10 @@ name: Run Gradle on PRs
 on: push
 jobs:
   gradle:
-    strategy:
-      matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
-    runs:
-      using: 'docker'
-      image: 'gitlab/dind'
+#    strategy:
+#      matrix:
+#        os: [windows-latest, ubuntu-latest, macos-latest]
+    runs-on: 'gitlab/dind'
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-java@v1
