@@ -8,15 +8,11 @@ jobs:
         os: [windows-latest, ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
+      - uses: actions/dind-action
       - uses: actions/checkout@v1
       - uses: actions/setup-java@v1
         with:
           java-version: 11
-      - uses: actions/dind-action
-        with:
-          args:
-            - make
-            - docker-push
       - uses: eskatos/gradle-command-action@v1
         with:
           arguments: build
