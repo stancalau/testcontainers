@@ -61,5 +61,5 @@ task integrationTest(type: Test) {
     classpath = sourceSets.integrationTest.runtimeClasspath
 }
 
-//check.dependsOn integrationTest
-//integrationTest.mustRunAfter assemble
+check.dependsOn integrationTest
+integrationTest.mustRunAfter assemble
