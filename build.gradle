@@ -1,0 +1,65 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.5.RELEASE'
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+group 'ro.stancalau.testcontainers'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+springBoot {
+    mainClassName = 'ro.stancalau.router.BootApplication'
+}
+
+sourceSets {
+    integrationTest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/integration-test/java')
+        }
+        resources.srcDir file('src/integration-test/resources')
+    }
+}
+
+configurations {
+    testCompileOnly.extendsFrom compileOnly
+    integrationTestCompile.extendsFrom testCompile
+    integrationTestCompileOnly.extendsFrom testCompileOnly
+    integrationTestRuntime.extendsFrom testRuntime
+}
+
+dependencies {
+
+    compile "org.springframework.boot:spring-boot-starter-web:$spring_boot_version"
+    compile "org.springframework.boot:spring-boot-starter-data-mongodb:$spring_boot_version"
+
+    testCompile group: 'junit', name: 'junit', version: junit_version
+    testCompile group: 'commons-logging', name: 'commons-logging', version: commons_logging_version
+    testCompile group: 'org.mockito', name: 'mockito-core', version: mokito_core_version
+    testCompile group: 'org.mock-server', name:'mockserver-netty', version: mock_server_version
+    testCompile group: 'org.mock-server', name:'mockserver-client-java', version: mock_server_version
+    testCompile group: 'org.hamcrest', name: 'hamcrest-core', version: hamcrest_version
+
+    testCompile group: 'ch.qos.logback', name: 'logback-classic', version: logback_version
+    testCompile group: 'ch.qos.logback', name: 'logback-core', version: logback_version
+
+    integrationTestCompile group: 'org.testcontainers', name: 'testcontainers', version: test_containers_version
+    integrationTestCompile group: 'org.apache.httpcomponents', name: 'httpclient', version: http_components_version
+
+}
+
+task integrationTest(type: Test) {
+    testClassesDirs = sourceSets.integrationTest.output.classesDirs
+    classpath = sourceSets.integrationTest.runtimeClasspath
+}
+
+//check.dependsOn integrationTest
+//integrationTest.mustRunAfter assemble
