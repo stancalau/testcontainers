@@ -12,6 +12,11 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 11
+      - uses: ./.github/actions/dind-action
+        with:
+          args:
+            - make
+            - docker-push
       - uses: eskatos/gradle-command-action@v1
         with:
           arguments: build
