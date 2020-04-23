@@ -16,7 +16,3 @@ jobs:
         with:
           arguments: build
         id: gradle
-      - uses: example/action-that-comments-on-the-pr@v0
-        if: failure()
-        with:
-          comment: Build failed ${{ steps.gradle.outputs.build-scan-url }}
