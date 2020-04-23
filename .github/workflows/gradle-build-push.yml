@@ -2,9 +2,9 @@
 name: Run Gradle on PRs
 on: push
 jobs:
-  docker:
-    name: Docker
-    runs-on: gitlab/dind
+  build:
+    docker:
+      - image: gitlab/dind
   gradle:
     strategy:
       matrix:
