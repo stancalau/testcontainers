@@ -44,6 +44,6 @@ public class IntegrationTest {
         InputStream content = response.getEntity().getContent();
         HopPath actualPath = mapper.readValue(content, HopPath.class);
         Hop expectedHop = new Hop("london", "hidden");
-        assertThat(actualPath.getHops().contains(expectedHop), equalTo(true));
+        assertThat(actualPath.getHops().contains(expectedHop), equalTo(false));
     }
 }
