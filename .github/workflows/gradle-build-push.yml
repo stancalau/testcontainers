@@ -7,9 +7,6 @@ jobs:
       matrix:
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
-    services:
-      docker:
-        image: stancalau/dind_gradle_jdk:jdk9
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
