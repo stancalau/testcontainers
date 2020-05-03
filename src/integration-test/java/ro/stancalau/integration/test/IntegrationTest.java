@@ -20,7 +20,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 public class IntegrationTest {
 
-    private static final int APP_PORT = 8080;
+    private static final int APP_PORT = 1234;
 
     private final ObjectMapper mapper = new ObjectMapper();
     private static final Network network = Network.newNetwork();

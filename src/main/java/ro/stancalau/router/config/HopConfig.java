@@ -15,6 +15,10 @@ public class HopConfig {
     private String name;
     private List<Hop> outbound;
 
+    /* Needed for Spring config loading */
+    HopConfig() {
+    }
+
     public HopConfig(String name, List<Hop> outbound) {
         this.name = name;
         this.outbound = outbound;

@@ -1,3 +1,6 @@
+server:
+  port : 1234
+
 hop:
   name: ${HOP_NAME}
   outbound:
