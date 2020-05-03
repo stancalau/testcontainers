@@ -23,5 +23,5 @@ jobs:
             -v "$PWD:$PWD" \
             -w "$PWD" \
             openjdk:8-jdk-alpine \
-            ./gradlew build
+            ./gradlew build --debug
 
