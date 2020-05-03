@@ -30,7 +30,7 @@ public class RouterContainer extends GenericContainer<RouterContainer> {
                 .withCopyFileToContainer(MountableFile.forHostPath("build/libs/TestContainers-1.0-SNAPSHOT.jar"),
                         "router.jar")
                 .withCommand("java", "-jar", "router.jar")
-                .waitingFor(Wait.forListeningPort().withStartupTimeout(Duration.of(320, SECONDS)))
+                .waitingFor(Wait.forListeningPort().withStartupTimeout(Duration.of(45, SECONDS)))
                 .withNetwork(network)
                 .withNetworkAliases(alias);
 
