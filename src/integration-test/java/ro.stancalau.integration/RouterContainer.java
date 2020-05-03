@@ -5,6 +5,10 @@ import org.testcontainers.containers.Network;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.utility.MountableFile;
 
+import java.time.Duration;
+
+import static java.time.temporal.ChronoUnit.SECONDS;
+
 public class RouterContainer extends GenericContainer<RouterContainer> {
 
     public static final String SOURCE = "adoptopenjdk/openjdk11:armv7l-centos-jdk-11.0.6_10";
@@ -26,7 +30,7 @@ public class RouterContainer extends GenericContainer<RouterContainer> {
                 .withCopyFileToContainer(MountableFile.forHostPath("build/libs/TestContainers-1.0-SNAPSHOT.jar"),
                         "router.jar")
                 .withCommand("java", "-jar", "router.jar")
-                .waitingFor(Wait.forListeningPort())
+                .waitingFor(Wait.forListeningPort().withStartupTimeout(Duration.of(320, SECONDS)))
                 .withNetwork(network)
                 .withNetworkAliases(alias);
 
